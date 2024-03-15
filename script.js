@@ -20,6 +20,43 @@ let winningPattern = [
 let xTurn = true;
 let count = 0;
 
+const disableButtons = () => {
+  btnRef.forEach((element) => (element.disabled = true));
+  popupRef.classList.remove("hide");
+};
+
+const enableButtons = () => {
+  btnRef.forEach((element) => {
+    element.innerText = "";
+    element.disabled = "false";
+  });
+  popupRef.classList.add("hide");
+};
+
+newgameBtn.addEventListener("click", () => {
+  count = 0;
+  enableButtons();
+});
+
+const winFunction = (letter) => {
+  disableButtons();
+};
+
+const winChecker = () => {
+  for (let i of winningPattern) {
+    let [element1, element2, element3] = [
+      btnRef[i[0]].innerText,
+      btnRef[i[1]].innerText,
+      btnRef[i[2]].innerText,
+    ];
+    if (element1 != "" && (element2 != "") & (element3 != "")) {
+      if (element1 == element2 && element2 == element3) {
+        winFunction(element1);
+      }
+    }
+  }
+};
+
 //Display X/O
 btnRef.forEach((element) => {
   element.addEventListener("click", () => {
