@@ -1,5 +1,5 @@
 let btnRef = document.querySelectorAll(".button-option");
-let popupRef = document.querySelectorAll(".popup");
+let popupRef = document.querySelector(".popup");
 let newgameBtn = document.getElementById("new-game");
 let restartBtn = document.getElementById("restart");
 let msgRef = document.getElementById("message");
@@ -28,12 +28,17 @@ const disableButtons = () => {
 const enableButtons = () => {
   btnRef.forEach((element) => {
     element.innerText = "";
-    element.disabled = "false";
+    element.disabled = false;
   });
   popupRef.classList.add("hide");
 };
 
 newgameBtn.addEventListener("click", () => {
+  count = 0;
+  enableButtons();
+});
+
+restartBtn.addEventListener("click", () => {
   count = 0;
   enableButtons();
 });
