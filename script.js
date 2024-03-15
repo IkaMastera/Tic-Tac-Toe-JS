@@ -33,6 +33,15 @@ const enableButtons = () => {
   popupRef.classList.add("hide");
 };
 
+const winFunction = (letter) => {
+  disableButtons();
+  if (letter == "X") {
+    msgRef.innerHTML = "&#x1F389; <br> 'X' Wins";
+  } else {
+    msgRef.innerHTML = "&#1F389; <br> 'O' Wins";
+  }
+};
+
 newgameBtn.addEventListener("click", () => {
   count = 0;
   enableButtons();
@@ -42,10 +51,6 @@ restartBtn.addEventListener("click", () => {
   count = 0;
   enableButtons();
 });
-
-const winFunction = (letter) => {
-  disableButtons();
-};
 
 const winChecker = () => {
   for (let i of winningPattern) {
