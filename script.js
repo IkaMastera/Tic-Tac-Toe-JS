@@ -38,8 +38,13 @@ const winFunction = (letter) => {
   if (letter == "X") {
     msgRef.innerHTML = "&#x1F389; <br> 'X' Wins";
   } else {
-    msgRef.innerHTML = "&#1F389; <br> 'O' Wins";
+    msgRef.innerHTML = "&#x1F389; <br> 'O' Wins";
   }
+};
+
+const drawFunction = () => {
+  disableButtons();
+  msgRef.innerHTML = "&#x1F60E; <br> It's a Draw";
 };
 
 newgameBtn.addEventListener("click", () => {
@@ -82,8 +87,11 @@ btnRef.forEach((element) => {
     }
     //Increment count on each click
     count += 1;
-    if (count === 9) {
+    if (count == 9) {
+      drawFunction();
     }
     winChecker();
   });
 });
+
+window.onload = enableButtons;
